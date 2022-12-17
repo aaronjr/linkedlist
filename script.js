@@ -8,36 +8,46 @@ class Node{
 class List{
     // get all data points from list
     all(){
+        // set to head and the node following the head
         let current = this.headNode
         let next = current.next
         let allData = []
         allData.push(this.headNode.data)
+        // loop through and add each data point to array
         while(next != null){
             allData.push(next.data)
             current = next
             next = next.next
         }
+        // return full array
         return allData
     }
     // add to end of list
     append(node){
+        // if no headNode set one
         if(!this.headNode){
             this.headNode = node
         } else {
+        // set to head and the node following the head
         let current = this.headNode
         let next = current.next
         while(next != null){
             current = next
             next = next.next
         }
+        // add node to end of current list
         current.next = node
         }
     }
     prepend(node){
+        // change current head to next of new node
+        // change the headNode to new node
         node.next = this.headNode
         this.headNode = node
     }
     size(){
+        // set a counter
+        // set to head and next of head
         let counter = 1;
         let current = this.headNode
         let next = current.next
@@ -46,6 +56,7 @@ class List{
             next = next.next
             counter += 1
         }
+        // return counter after looping through all items
         return counter
     }
     // get back last item
@@ -56,9 +67,11 @@ class List{
             current = next
             next = next.next
         } 
+        // return current when next = null
         return current.data
     }
     at(index){
+        // set counter
         let counter = 1
         let current = this.headNode
         let next = current.next
@@ -67,9 +80,12 @@ class List{
             next = next.next
             counter ++
         }
+        // return after loop when target matches counter
         return current.data
     }
     pop(){
+        // run to end of list by checking for null
+        // then change the second from last next to null
         let current = this.headNode
         let next = current.next
         while(next.next !== null){
@@ -79,18 +95,23 @@ class List{
         current.next = null
     }
     contains(target){
+        // set to current head and its next
         let current = this.headNode
         let next = current.next
         while(next.next !== null){
+            // if it matches return true
             if(current.data == target) {
                 return true
             }
             current = next
             next = next.next
         }
+        // return false if no match
         return false
     }
     find(target){
+        // as before set a counter to get to the correct index
+        // but return the index not true or false
         let current = this.headNode
         let next = current.next
         let counter = 0
@@ -107,6 +128,7 @@ class List{
         return null
     }
     toString(){
+        // loop over the list and data using template strings
         let current = this.headNode
         let next = current.next
         let string = `(${current.data}) -> `
@@ -115,9 +137,13 @@ class List{
             current = next
             next = next.next
         }
+        // return the string with end set to null
         return string += `(null)`
     }
     insertAt(index, node){
+        // takes in an index and node
+        // lopp through list to index and add node changing
+        // the nexts appropatly
         let counter = 0
         let prev
         let current = this.headNode
@@ -137,6 +163,9 @@ class List{
         }
     }
     removeAt(index){
+        // loop through list to correct index
+        // change previous.next to next
+        // skipping current, thus the list forgetting it
         let counter = 0
         let prev
         let current = this.headNode
@@ -155,6 +184,7 @@ class List{
     }
 }
 
+// create nodes
 const one = new Node(1)
 const two = new Node(2)
 const three = new Node(3)
