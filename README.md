@@ -2,6 +2,8 @@
 
 This code is a 'solution' to The Odin Project's Linked Lists Project, part of their Computer Science course.
 
+Run with Node installed: node script.js
+
 ### Two classes:
 
 - LinkedList class, which will represent the full list.
