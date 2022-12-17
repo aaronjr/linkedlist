@@ -117,6 +117,42 @@ class List{
         }
         return string += `(null)`
     }
+    insertAt(index, node){
+        let counter = 0
+        let prev
+        let current = this.headNode
+        let next = current.next
+        while(counter !== index){
+            prev = current
+            current = next
+            next = next.next
+            counter ++
+        }
+        if (index == 0){
+            node.next = this.headNode
+            this.headNode = node 
+        } else {
+        node.next = current
+        prev.next = node
+        }
+    }
+    removeAt(index){
+        let counter = 0
+        let prev
+        let current = this.headNode
+        let next = current.next
+        while(counter !== index){
+            prev = current
+            current = next
+            next = next.next
+            counter ++
+        }
+        if(index == 0){
+            this.headNode = this.headNode.next
+        } else {
+        prev.next = next
+        }
+    }
 }
 
 const one = new Node(1)
@@ -180,11 +216,9 @@ console.log(theList.toString())
 
 // insert new node
 const seven = new Node(7)
-// function
-console.log('All inc 7:' )
-
+theList.insertAt(2, seven)
+console.log('All inc 7, at 2nd index:', theList.all())
 
 // insert new node
-const eight = new Node(8)
-// function
-console.log('All inc 8:' )
+theList.removeAt(3)
+console.log('Remove 3rd item:', theList.all())
